@@ -1,0 +1,6 @@
+{
+  "name": "SmartCV Builder",
+  "description": "Smart AI-powered CV and resume builder featuring real-time interactive previews, Gemini AI content generation (summaries, bullet points, skills), ATS scorecard checks, and template switching.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

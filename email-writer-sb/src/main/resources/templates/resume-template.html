@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${resume.title}">Resume</title>
+    <style>
+        body { font-family: 'Helvetica', 'Arial', sans-serif; font-size: 11pt; color: #333; line-height: 1.4; margin: 0; padding: 20px; }
+        .header { text-align: center; margin-bottom: 15px; border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+        .header h1 { font-size: 24pt; margin: 0 0 5px 0; color: #111; }
+        .header p { margin: 2px 0; font-size: 10pt; color: #555; }
+        .section { margin-bottom: 15px; }
+        .section h2 { font-size: 14pt; color: #222; border-bottom: 1px solid #ccc; margin-bottom: 5px; padding-bottom: 3px; }
+        .item { margin-bottom: 10px; }
+        .item-title { font-weight: bold; font-size: 12pt; }
+        .item-subtitle { font-style: italic; color: #444; }
+        .item-date { float: right; font-size: 10pt; color: #666; }
+        ul { margin-top: 5px; margin-bottom: 5px; padding-left: 20px; }
+        li { margin-bottom: 3px; }
+        .skills, .languages { column-count: 2; column-gap: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="header" th:if="${resume.personalInfo != null}">
+    <h1 th:text="${resume.personalInfo.fullName}" th:style="'color: ' + ${resume.accentColor != null ? resume.accentColor : '#111'}">John Doe</h1>
+    <p>
+        <span th:if="${resume.personalInfo.email != null}" th:text="${resume.personalInfo.email}"></span> |
+        <span th:if="${resume.personalInfo.phone != null}" th:text="${resume.personalInfo.phone}"></span> |
+        <span th:if="${resume.personalInfo.location != null}" th:text="${resume.personalInfo.location}"></span>
+    </p>
+</div>
+
+<div class="section" th:if="${resume.summary != null}">
+    <h2>Professional Summary</h2>
+    <p th:text="${resume.summary}"></p>
+</div>
+
+<div class="section" th:if="${resume.experience != null and !resume.experience.isEmpty()}">
+    <h2>Experience</h2>
+    <div class="item" th:each="exp : ${resume.experience}">
+        <div>
+            <span class="item-title" th:text="${exp.role}">Role</span> at <span class="item-subtitle" th:text="${exp.company}">Company</span>
+            <span class="item-date" th:text="${exp.startDate + ' - ' + (exp.current ? 'Present' : exp.endDate)}"></span>
+        </div>
+        <ul th:if="${exp.bullets != null}">
+            <li th:each="bullet : ${exp.bullets}" th:text="${bullet}"></li>
+        </ul>
+    </div>
+</div>
+
+<div class="section" th:if="${resume.education != null and !resume.education.isEmpty()}">
+    <h2>Education</h2>
+    <div class="item" th:each="edu : ${resume.education}">
+        <div>
+            <span class="item-title" th:text="${edu.degree}">Degree</span> - <span class="item-subtitle" th:text="${edu.institution}">Institution</span>
+            <span class="item-date" th:text="${edu.startDate + ' - ' + edu.endDate}"></span>
+        </div>
+        <p th:if="${edu.score != null}" th:text="'Score: ' + ${edu.score}"></p>
+    </div>
+</div>
+
+<div class="section" th:if="${resume.skills != null and !resume.skills.isEmpty()}">
+    <h2>Skills</h2>
+    <ul class="skills">
+        <li th:each="skill : ${resume.skills}" th:text="${skill}"></li>
+    </ul>
+</div>
+
+<div class="section" th:if="${resume.certifications != null and !resume.certifications.isEmpty()}">
+    <h2>Certifications</h2>
+    <ul>
+        <li th:each="cert : ${resume.certifications}">
+            <strong th:text="${cert.name}"></strong> (<span th:text="${cert.issuer}"></span>) - <span th:text="${cert.date}"></span>
+        </li>
+    </ul>
+</div>
+
+<div class="section" th:if="${resume.languages != null and !resume.languages.isEmpty()}">
+    <h2>Languages</h2>
+    <ul class="languages">
+        <li th:each="lang : ${resume.languages}">
+            <span th:text="${lang.name}"></span>: <span th:text="${lang.proficiency}"></span>
+        </li>
+    </ul>
+</div>
+
+<div class="section" th:if="${resume.awards != null and !resume.awards.isEmpty()}">
+    <h2>Awards</h2>
+    <ul>
+        <li th:each="award : ${resume.awards}">
+            <strong th:text="${award.title}"></strong> from <span th:text="${award.issuer}"></span> - <span th:text="${award.date}"></span>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
