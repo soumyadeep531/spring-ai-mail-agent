@@ -43,7 +43,8 @@ SmartCV Builder is a next-generation career tool designed to help professionals 
    npm run dev
    ```
 
-The app will be accessible at `http://localhost:5173`.
+The frontend will be accessible at `http://localhost:5173`.
+The backend runs on: `http://localhost:9090`.
 
 ---
 
