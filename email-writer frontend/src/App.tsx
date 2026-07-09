@@ -40,7 +40,7 @@ export default function App() {
         return;
     }
     try {
-      const res = await fetch("/api/resumes", {
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + "/api/resumes", {
         headers: {
             "Authorization": `Bearer ${token}`
         }
@@ -115,7 +115,7 @@ export default function App() {
       const newDraft = { ...resumeData, id: undefined, title: `${resumeData.title} (Copy)` };
       
       // POST as new
-      const createRes = await fetch("/api/resumes", {
+      const createRes = await fetch((import.meta.env.VITE_API_URL || "") + "/api/resumes", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json",
@@ -185,7 +185,7 @@ export default function App() {
     };
 
     // Save parsed draft immediately to local Express db
-    fetch("/api/resumes", {
+    fetch((import.meta.env.VITE_API_URL || "") + "/api/resumes", {
       method: "POST",
       headers: { 
           "Content-Type": "application/json",

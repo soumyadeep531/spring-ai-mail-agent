@@ -80,7 +80,7 @@ export const BuilderPage: React.FC<BuilderPageProps> = ({ initialResume, onBackT
   const handleRunATSScan = async () => {
     setAtsLoading(true);
     try {
-      const res = await fetch("/api/resume/score", {
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + "/api/resume/score", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json",
@@ -112,7 +112,7 @@ export const BuilderPage: React.FC<BuilderPageProps> = ({ initialResume, onBackT
   const handleGenerateSummary = async () => {
     setSummaryGenerating(true);
     try {
-      const res = await fetch("/api/ai/summary", {
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + "/api/ai/summary", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json",
@@ -139,7 +139,7 @@ export const BuilderPage: React.FC<BuilderPageProps> = ({ initialResume, onBackT
   const handlePolishBullet = async (expId: string, bulletIdx: number, currentText: string) => {
     setBulletPolishingId(`${expId}-${bulletIdx}`);
     try {
-      const res = await fetch("/api/ai/bullet-point", {
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + "/api/ai/bullet-point", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json",
@@ -177,7 +177,7 @@ export const BuilderPage: React.FC<BuilderPageProps> = ({ initialResume, onBackT
   const handleFetchSkillSuggestions = async () => {
     setSkillsLoading(true);
     try {
-      const res = await fetch("/api/ai/skill-suggestions", {
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + "/api/ai/skill-suggestions", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json",

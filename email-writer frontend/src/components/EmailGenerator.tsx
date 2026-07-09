@@ -32,7 +32,7 @@ export const EmailGenerator: React.FC<EmailGeneratorProps> = ({ onBack }) => {
 
     try {
       const toneLabel = TONES.find(t => t.id === selectedTone)?.label || "Professional";
-      const res = await fetch("/api/ai/email-reply", {
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + "/api/ai/email-reply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ originalEmail, tone: toneLabel })

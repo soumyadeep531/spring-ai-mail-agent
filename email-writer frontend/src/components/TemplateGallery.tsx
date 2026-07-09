@@ -40,7 +40,7 @@ export const TemplateGallery: React.FC<TemplateGalleryProps> = ({ onBack, onSele
   };
 
   useEffect(() => {
-    fetch("/api/templates")
+    fetch((import.meta.env.VITE_API_URL || "") + "/api/templates")
       .then((res) => res.json())
       .then((data) => {
         setTemplates(data);

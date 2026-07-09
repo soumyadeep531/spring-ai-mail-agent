@@ -19,7 +19,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ onLogin }) => {
     setError('');
 
     try {
-      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
+      const endpoint = isLogin ? (import.meta.env.VITE_API_URL || "") + '/api/auth/login' : (import.meta.env.VITE_API_URL || "") + '/api/auth/register';
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

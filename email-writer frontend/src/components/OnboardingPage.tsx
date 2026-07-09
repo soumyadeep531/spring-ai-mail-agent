@@ -24,7 +24,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({ onBack, onStartB
       const formData = new FormData();
       formData.append("file", file);
 
-      const res = await fetch("/api/resume/parse", {
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + "/api/resume/parse", {
         method: "POST",
         body: formData,
         // Let the browser set the Content-Type with the boundary for multipart/form-data
