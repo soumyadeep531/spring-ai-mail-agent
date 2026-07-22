@@ -22,22 +22,28 @@ public class TemplateController {
     public ResponseEntity<List<Map<String, String>>> getTemplates() {
         return ResponseEntity.ok(Arrays.asList(
             Map.of(
-                "id", "modern-sidebar",
+                "id", "modern",
                 "name", "Modern",
                 "layoutType", "two-column",
-                "previewSampleDataUrl", "/api/templates/modern-sidebar/sample/pdf"
+                "previewSampleDataUrl", "/api/templates/modern/sample/pdf"
             ),
             Map.of(
-                "id", "classic-centered",
-                "name", "Classic",
+                "id", "professional",
+                "name", "Professional",
                 "layoutType", "single-column",
-                "previewSampleDataUrl", "/api/templates/classic-centered/sample/pdf"
+                "previewSampleDataUrl", "/api/templates/professional/sample/pdf"
             ),
             Map.of(
-                "id", "executive-photo",
-                "name", "Executive",
+                "id", "elegant",
+                "name", "Elegant",
                 "layoutType", "two-column-photo",
-                "previewSampleDataUrl", "/api/templates/executive-photo/sample/pdf"
+                "previewSampleDataUrl", "/api/templates/elegant/sample/pdf"
+            ),
+            Map.of(
+                "id", "minimal",
+                "name", "Minimal",
+                "layoutType", "single-column",
+                "previewSampleDataUrl", "/api/templates/minimal/sample/pdf"
             )
         ));
     }

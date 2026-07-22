@@ -29,11 +29,13 @@ export const TemplateGallery: React.FC<TemplateGalleryProps> = ({ onBack, onSele
 
   const getFixtureForTemplate = (templateId: string): Resume => {
     switch (templateId) {
-      case "classic-centered":
+      case "professional":
         return SAMPLE_LAWYER;
-      case "executive-photo":
+      case "elegant":
         return SAMPLE_SENIOR_ANALYST;
-      case "modern-sidebar":
+      case "minimal":
+        return SAMPLE_SENIOR_ANALYST;
+      case "modern":
       default:
         return SAMPLE_ADMIN_ASSISTANT;
     }
@@ -129,7 +131,7 @@ export const TemplateGallery: React.FC<TemplateGalleryProps> = ({ onBack, onSele
                   </div>
 
                   {/* Live Mini Preview */}
-                  <div className="bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-6 flex-1 flex justify-center p-2 relative h-[400px]">
+                  <div className="bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-6 flex-1 flex justify-center p-2 relative min-h-[400px]">
                     <div className="transform scale-[0.42] origin-top-left absolute top-4 left-4 pointer-events-none w-[750px]">
                       <ResumePreviewRenderer 
                         resume={{ ...getFixtureForTemplate(tpl.id), templateId: tpl.id, accentColor: activeColor }} 

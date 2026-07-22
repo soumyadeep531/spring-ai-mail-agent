@@ -393,10 +393,10 @@ export const BuilderPage: React.FC<BuilderPageProps> = ({ initialResume, onBackT
 
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col no-print antialiased">
+    <div className="min-h-screen bg-slate-100 flex flex-col antialiased print:bg-white print:block">
       
       {/* 1. TOP CONTROL BAR */}
-      <header className="bg-white border-b border-slate-200/80 px-6 py-4 flex items-center justify-between shadow-sm z-30">
+      <header className="bg-white border-b border-slate-200/80 px-6 py-4 flex items-center justify-between shadow-sm z-30 print:hidden">
         <div className="flex items-center gap-4">
           <button 
             onClick={onBackToDashboard}
@@ -456,10 +456,10 @@ export const BuilderPage: React.FC<BuilderPageProps> = ({ initialResume, onBackT
       </header>
 
       {/* 2. THREE-PANEL CORE CONTAINER */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden print:overflow-visible">
         
         {/* PANEL 1: LEFT ICON RAIL */}
-        <div className="w-16 bg-white border-r border-slate-200 flex flex-col justify-between py-6 items-center z-20 shrink-0">
+        <div className="w-16 bg-white border-r border-slate-200 flex flex-col justify-between py-6 items-center z-20 shrink-0 print:hidden">
           <div className="flex flex-col gap-5 items-center w-full">
             
             {/* Templates icon */}
@@ -544,7 +544,7 @@ export const BuilderPage: React.FC<BuilderPageProps> = ({ initialResume, onBackT
         </div>
 
         {/* PANEL 2: WORKSPACE ACTIVE VIEW (Width 450px) */}
-        <div className="w-[450px] bg-slate-50 border-r border-slate-200 overflow-y-auto shrink-0 flex flex-col justify-between z-10">
+        <div className="w-[450px] bg-slate-50 border-r border-slate-200 overflow-y-auto shrink-0 flex flex-col justify-between z-10 print:hidden">
           
           <div className="p-6">
             
@@ -1374,10 +1374,10 @@ export const BuilderPage: React.FC<BuilderPageProps> = ({ initialResume, onBackT
         </div>
 
         {/* PANEL 3: RESUME PHYSICAL PAPER PREVIEW */}
-        <div className="flex-1 bg-slate-100 p-8 overflow-y-auto flex justify-center items-start z-0">
+        <div className="flex-1 bg-slate-100 p-8 overflow-y-auto flex justify-center items-start z-0 print:block print:p-0 print:m-0 print:bg-white print:overflow-visible">
           
           {/* Constrained layout for A4 simulation */}
-          <div className="w-full max-w-[800px] min-w-[650px] shadow-lg rounded-sm overflow-hidden select-text">
+          <div className="w-full max-w-[800px] min-w-[650px] shadow-lg rounded-sm overflow-hidden select-text print:shadow-none print:w-full print:max-w-none print:min-w-0 print:overflow-visible">
             
             {/* The single-source-of-truth visual renderer */}
             <ResumePreviewRenderer resume={resume} />
