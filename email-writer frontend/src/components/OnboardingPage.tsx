@@ -10,6 +10,8 @@ interface OnboardingPageProps {
 export const OnboardingPage: React.FC<OnboardingPageProps> = ({ onBack, onStartBlank, onStartWithParsedData }) => {
   const [importMode, setImportMode] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const handleParseFile = async () => {
     if (!file) {
