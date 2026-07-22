@@ -36,7 +36,12 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({ onBack, onStartB
       });
 
       if (!res.ok) {
-        throw new Error("Failed to parse resume file");
+        let backendError = "Failed to parse resume file";
+        try {
+          const errData = await res.json();
+          if (errData.error) backendError = errData.error;
+        } catch(e) {}
+        throw new Error(backendError);
       }
 
       const data = await res.json();
@@ -46,7 +51,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({ onBack, onStartB
       onStartWithParsedData(data.parsedData || data);
     } catch (err: any) {
       console.error("Parse error:", err);
-      setError("Failed to parse resume file. Ensure it's a valid PDF or DOCX.");
+      setError(err.message || "Failed to parse resume file. Ensure it's a valid PDF or DOCX.");
     } finally {
       setLoading(false);
     }

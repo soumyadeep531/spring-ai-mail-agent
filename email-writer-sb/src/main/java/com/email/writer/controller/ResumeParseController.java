@@ -85,7 +85,9 @@ public class ResumeParseController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\": \"Failed to parse resume\"}");
+            // Return the actual exception message so we can see what's wrong
+            String errorMsg = e.getMessage() != null ? e.getMessage().replace("\"", "\\\"") : "Unknown error";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\": \"Failed to parse resume: " + errorMsg + "\"}");
         }
     }
 }
