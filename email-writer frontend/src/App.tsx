@@ -323,7 +323,7 @@ export default function App() {
   return (
     <>
         {token && (
-          <div className="absolute top-4 right-4 z-50">
+          <div className="absolute top-4 right-4 z-50 print:hidden">
               <button onClick={handleLogout} className="flex items-center text-sm font-medium text-slate-500 hover:text-slate-800 bg-white p-2 rounded-md shadow-sm border border-slate-200">
                   <LogOut className="w-4 h-4 mr-2" />
                   Sign Out
